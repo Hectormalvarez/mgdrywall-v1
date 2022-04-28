@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3mgdrywallv1storage92b025c1",
+  "bucketName": "mgdrywallv1-storage-92b025c1",
+  "policyUUID": "c3dc63dd",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

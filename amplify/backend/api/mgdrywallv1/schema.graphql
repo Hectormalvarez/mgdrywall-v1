@@ -1,0 +1,39 @@
+type MGDWorkNote @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  noteText: String
+  Images: [MGDImage] @hasMany(indexName: "byMGDWorkNote", fields: ["id"])
+  Projects: [MGDImage] @hasMany(indexName: "byMGDWorkNote", fields: ["id"])
+}
+
+type MGDClient @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  email: String
+  phoneNumber: String
+  address: String
+  city: String
+  Projects: [MGDProject] @hasMany(indexName: "byMGDClient", fields: ["id"])
+}
+
+type MGDImage @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  description: String
+  projectID: ID! @index(name: "byMGDProject")
+  worknoteID: ID @index(name: "byMGDWorkNote")
+  imageKey: String!
+}
+
+type MGDProject @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String!
+  description: String!
+  startDate: AWSDate
+  finishDate: AWSDate
+  city: String
+  isFinished: Boolean
+  Images: [MGDImage] @hasMany(indexName: "byMGDProject", fields: ["id"])
+  clientID: ID! @index(name: "byMGDClient")
+  worknoteID: ID! @index(name: "byWorkNote")
+}

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-mgdrywallv1-staging-133415-authRole",
+      "UnauthRoleArn": "arn:aws:iam::180025060303:role/amplify-mgdrywallv1-staging-133415-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::180025060303:role/amplify-mgdrywallv1-staging-133415-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-mgdrywallv1-staging-133415-deployment",
+      "UnauthRoleName": "amplify-mgdrywallv1-staging-133415-unauthRole",
+      "StackName": "amplify-mgdrywallv1-staging-133415",
+      "StackId": "arn:aws:cloudformation:us-east-2:180025060303:stack/amplify-mgdrywallv1-staging-133415/e66b82b0-c6f7-11ec-840f-0ac2fe290c12",
+      "AmplifyAppId": "d3llxjfjuzsztv"
+    },
+    "categories": {
+      "auth": {
+        "mgdrywallv1": {}
+      }
+    }
+  }
+}
