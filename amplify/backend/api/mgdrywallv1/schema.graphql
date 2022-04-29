@@ -1,31 +1,35 @@
-type MGDWorkNote @model @auth(rules: [{allow: public}]) {
+type MGDWorkNote @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   title: String
   noteText: String
-  Images: [MGDImage] @hasMany(indexName: "byMGDWorkNote", fields: ["id"])
-  Projects: [MGDImage] @hasMany(indexName: "byMGDWorkNote", fields: ["id"])
+  Images: [MGDImage] @hasMany
+  Projects: [MGDProject] @hasMany
 }
 
-type MGDClient @model @auth(rules: [{allow: public}]) {
+type MGDClient @model @auth(rules: [{ allow: owner }]) {
   id: ID!
   name: String
   email: String
   phoneNumber: String
   address: String
   city: String
-  Projects: [MGDProject] @hasMany(indexName: "byMGDClient", fields: ["id"])
+  Projects: [MGDProject] @hasMany
 }
 
-type MGDImage @model @auth(rules: [{allow: public}]) {
+type MGDImage
+  @model
+  @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }]) {
   id: ID!
   title: String
   description: String
-  projectID: ID! @index(name: "byMGDProject")
-  worknoteID: ID @index(name: "byMGDWorkNote")
+  projectID: MGDProject @belongsTo
+  worknoteID: MGDWorkNote @belongsTo
   imageKey: String!
 }
 
-type MGDProject @model @auth(rules: [{allow: public}]) {
+type MGDProject
+  @model
+  @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }]) {
   id: ID!
   title: String!
   description: String!
@@ -33,7 +37,7 @@ type MGDProject @model @auth(rules: [{allow: public}]) {
   finishDate: AWSDate
   city: String
   isFinished: Boolean
-  Images: [MGDImage] @hasMany(indexName: "byMGDProject", fields: ["id"])
-  clientID: ID! @index(name: "byMGDClient")
-  worknoteID: ID! @index(name: "byWorkNote")
+  Images: [MGDImage] @hasMany
+  client: MGDClient @belongsTo
+  worknote: MGDWorkNote @belongsTo
 }

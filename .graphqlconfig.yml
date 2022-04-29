@@ -1,0 +1,15 @@
+projects:
+  mgdrywallv1:
+    schemaPath: amplify/backend/api/mgdrywallv1/build/schema.graphql
+    includes:
+      - src/graphql/**/*.js
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: javascript
+        generatedFileName: ''
+        docsFilePath: src/graphql
+        region: us-east-2
+        apiId: null
+        maxDepth: 2
