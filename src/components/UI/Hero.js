@@ -13,7 +13,7 @@ function Hero() {
                 className="blur-sm"
             />
             <div className="absolute h-full w-full bg-black opacity-5"></div>
-            <div className="absolute top-0 mt-8 h-full px-4 py-32 font-anek md:left-20 xl:left-[12vw] 2xl:left-[18vw]">
+            <div className="absolute top-0 mt-8 h-full px-4 py-20 font-anek md:left-20 xl:left-[12vw] 2xl:left-[18vw]">
                 <p className="py-1 text-4xl sm:text-5xl text-slate-600 md:text-7xl">
                     Welcome to
                 </p>

@@ -1,5 +1,6 @@
 import '../../configureAmplify'
 import Layout from '../components/layout/Layout'
+import '@aws-amplify/ui-react/styles.css';
 import '../styles/globals.css'
 
 

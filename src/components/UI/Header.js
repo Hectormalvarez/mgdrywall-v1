@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
     const [showNav, setShowNav] = useState(false);
@@ -15,12 +16,6 @@ const Header = () => {
         }
     };
 
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    };
 
     useEffect(() => {
         window.addEventListener("scroll", toggleAtTop);
@@ -28,26 +23,27 @@ const Header = () => {
 
     return (
         <header
-            className={`sticky shadow-lg top-0 z-10 flex w-screen bg-slate-300 text-slate-900 ${!atTop ? "h-32" : ""}`}
+            className={`
+            sticky shadow-lg top-0 z-10 flex w-screen bg-slate-300 text-slate-900 ease-in-out duration-300 
+            ${!atTop ? "scale-110" : ""}
+            `}
         >
             <div className="m-auto flex max-w-6xl flex-1 items-center justify-between">
                 {/* brand */}
-                <div
-                    onClick={scrollToTop}
-                    className="flex flex-1 items-center md:mr-16 md:pl-8 md:hover:cursor-pointer md:hover:bg-slate-400"
-                >
-                    <Image
-                        alt="navlogo"
-                        src={"/mgdlogo-transparent-bg.png"}
-                        width={`${!atTop ? 225 : 200}`}
-                        height={`${!atTop ? 125 : 85}`}
+                <div className="flex flex-1 items-center md:mr-16 md:pl-8 md:hover:cursor-pointer md:hover:bg-slate-400">
+                    <Link
+                        href={"/"}
+                        passHref
+                    >
+                        <Image
+                            alt="navlogo"
+                            src={"/mgdlogo-transparent-bg.png"}
+                            width={`${!atTop ? 225 : 200}`}
+                            height={`${!atTop ? 125 : 85}`}
 
-                    />
-
-                    {/* <HomeIcon className="mr-2 w-8 md:w-10" />
-          <p className="font-dance font-bold whitespace-nowrap text-3xl md:text-4xl">MG Drywall U.S.A.</p> */}
+                        />
+                    </Link>
                 </div>
-
                 {/* hamburger */}
                 <div
                     className={`z-20 px-8 py-4 text-slate-800 md:hidden`}
@@ -95,7 +91,7 @@ const Header = () => {
                     })}
                 </div>
             </div>
-        </header>
+        </header >
     );
 };
 
