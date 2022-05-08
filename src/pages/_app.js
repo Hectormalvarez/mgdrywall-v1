@@ -1,11 +1,14 @@
-import '../../configureAmplify'
-import Layout from '../components/layout/Layout'
-import '@aws-amplify/ui-react/styles.css';
-import '../styles/globals.css'
-
+import "../../configureAmplify";
+import Layout from "../components/layout/Layout";
+import "@aws-amplify/ui-react/styles.css";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  return <Layout><Component {...pageProps} /></Layout>
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  );
 }
 
-export default MyApp
+export default MyApp;
